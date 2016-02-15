@@ -55,36 +55,6 @@ connecting over SSL will be given user mode +Z, and
 WHOIS (a 671 numeric). Webchat users will not appear
 with +Z or the 671 numeric, even if they connect to webchat via SSL.</p>
 
-<p>If you wish to verify the server certificates on connection, some additional
-work may be required. First, ensure that your system has an up-to-date set of
-root CA certificates. On most linux distributions this will be in a package
-named something like ca-certificates. Many systems install these by default, but
-some do not (such as FreeBSD, on which the package you wish to install is
-ca_root_nss, and the cafile to use would be
-/usr/local/share/certs/ca-root-nss.crt). For most clients this should be
-sufficient. If not, you can download the required intermediate cert from <a
-href="http://crt.gandi.net/GandiStandardSSLCA.crt">Gandi</a> and the root
-cert from <a href="http://www.instantssl.com/ssl-certificate-support/cert_installation/UTN-USERFirst-Hardware.crt">InstantSSL</a>.</p>
-
-<p>Those of you using irssi will find that it has some oddities in SSL
-certificate verification, and will not find the root certificates on its own. To
-work around this, use</p>
-
-
-<p><span class="verbatim-b">/connect -ssl_verify -ssl_capath /etc/ssl/certs chat.freenode.net
-6697</span></p>
-
-
-<p>or on FreeBSD</p>
-
-
-<p><span class="verbatim-b">/connect -ssl_cafile /usr/local/share/certs/ca-root-nss.crt
-chat.freenode.net 6697</span></p>
-
-
-<p>Once you tell irssi where to find the root certificates, it should be able to
-verify the certificate correctly.</p>
-
 <p>Client SSL certificates are also supported, and may be used for identification
 to services via <a href="certfp/">CertFP</a>. If you have connected with a client
 certificate, <span class="verbatim-i">has client certificate fingerprint
